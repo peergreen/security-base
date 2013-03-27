@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ipojo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="org.apache.felix.ipojo"
+       xsi:schemaLocation="org.apache.felix.ipojo http://felix.apache.org/ipojo/schemas/1.8.0/core.xsd">
+
+  <instance component="com.peergreen.security.internal.encode.Base64EncoderService" />
+  <instance component="com.peergreen.security.internal.encode.HexaEncoderService" />
+
+  <instance component="com.peergreen.security.internal.hash.plain.PlainHashService" />
+
+  <instance component="com.peergreen.security.internal.hash.digest.MessageDigestHashService">
+    <property name="hash.name" value="{md5, MD5}" />
+    <property name="algorithm" value="MD5" />
+  </instance>
+
+  <instance component="com.peergreen.security.internal.hash.digest.MessageDigestHashService">
+    <property name="hash.name" value="{md2, MD2}" />
+    <property name="algorithm" value="MD2" />
+  </instance>
+
+  <instance component="com.peergreen.security.internal.hash.digest.MessageDigestHashService">
+    <property name="hash.name" value="{sha-1, SHA-1}" />
+    <property name="algorithm" value="SHA-1" />
+  </instance>
+
+  <instance component="com.peergreen.security.internal.hash.digest.MessageDigestHashService">
+    <property name="hash.name" value="{sha-256, SHA-256}" />
+    <property name="algorithm" value="SHA-256" />
+  </instance>
+
+  <instance component="com.peergreen.security.internal.hash.digest.MessageDigestHashService">
+    <property name="hash.name" value="{sha-384, SHA-384}" />
+    <property name="algorithm" value="SHA-384" />
+  </instance>
+
+  <instance component="com.peergreen.security.internal.hash.digest.MessageDigestHashService">
+    <property name="hash.name" value="{sha-512, SHA-512}" />
+    <property name="algorithm" value="SHA-512" />
+  </instance>
+
+  <!-- TODO Make this configurable -->
+  <instance component="com.peergreen.security.internal.realm.SimpleFileRealm" />
+
+  <instance component="com.peergreen.security.internal.UsernamePasswordAutoLoginService">
+    <property name="username" value="admin" />
+    <property name="password" value="peergreen" />
+  </instance>
+
+</ipojo>
