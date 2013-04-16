@@ -17,7 +17,10 @@
 # The Base 64 library is not exposed through OSGi as it's only for internal use
 Embed-Dependency base64;scope=provided;inline=true,\
                  configuration-*;scope=provided;inline=true,\
-                 security-api;scope=provided;inline=true
+                 security-api;scope=provided;inline=true, \
+                 file;scope=provided;inline=true
+
+Embed-Transitive true
 
 -exportcontents com.peergreen.security, \
                 com.peergreen.security.encode, \
