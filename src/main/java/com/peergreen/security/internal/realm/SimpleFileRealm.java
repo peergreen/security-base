@@ -16,7 +16,6 @@
 package com.peergreen.security.internal.realm;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.acl.Group;
@@ -60,7 +59,6 @@ import com.peergreen.security.principal.UserPrincipal;
  * User: guillaume
  * Date: 19/03/13
  * Time: 16:53
- *
  */
 @Component
 @Provides
@@ -199,20 +197,4 @@ public class SimpleFileRealm implements UsernamePasswordAuthenticateService {
         return group;
     }
 
-    private class ClassRelativeResource implements Resource {
-        private final String name;
-
-        public ClassRelativeResource(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public InputStream openStream() throws RepositoryException {
-            try {
-                return getClass().getResource(name).openStream();
-            } catch (IOException e) {
-                throw new RepositoryException("Cannot push 'users.properties'", e);
-            }
-        }
-    }
 }
