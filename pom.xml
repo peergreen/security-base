@@ -30,6 +30,13 @@
 
   <name>Peergreen Security Base</name>
 
+  <scm>
+    <connection>scm:git:https://forge.peergreen.com/git/git/security/security-base.git</connection>
+    <developerConnection>scm:git:https://forge.peergreen.com/git/git/security/security-base.git</developerConnection>
+    <url>https://forge.peergreen.com/git/summary/?r=security/security-base.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <dependencies>
 
     <dependency>
@@ -110,12 +117,18 @@
     </plugins>
   </build>
 
-
   <repositories>
     <repository>
       <id>ow2.snapshots</id>
       <url>http://repository.ow2.org/nexus/content/repositories/snapshots/</url>
       <releases><enabled>false</enabled></releases>
+    </repository>
+    <repository>
+      <id>peergreen.release</id>
+      <name>Peergreen Release Nexus</name>
+      <url>https://forge.peergreen.com/nexus/content/repositories/releases/</url>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>false</enabled></snapshots>
     </repository>
   </repositories>
 
