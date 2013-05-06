@@ -18,7 +18,6 @@ package com.peergreen.security.internal.encode;
 import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Provides;
 import org.apache.felix.ipojo.annotations.StaticServiceProperty;
-import org.ow2.util.base64.Base64;
 
 import com.peergreen.security.encode.EncoderService;
 
@@ -31,18 +30,18 @@ import com.peergreen.security.encode.EncoderService;
 @Provides(
         properties = @StaticServiceProperty(
                 name = EncoderService.ENCODER_FORMAT,
-                value = "{b64, base64, base-64}",
+                value = "{text, txt}",
                 type = "java.lang.String[]"
         )
 )
-public class Base64EncoderService implements EncoderService {
+public class TextEncoderService implements EncoderService {
     @Override
     public String encode(byte[] value) {
-        return String.valueOf(Base64.encode(value));
+        return new String(value);
     }
 
     @Override
     public byte[] decode(String value) {
-        return Base64.decode(value.toCharArray());
+        return value.getBytes();
     }
 }

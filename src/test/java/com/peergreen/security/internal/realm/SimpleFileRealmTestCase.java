@@ -25,13 +25,8 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import javax.security.auth.Subject;
 
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.peergreen.security.hash.Hash;
-import com.peergreen.security.hash.HashService;
 import com.peergreen.security.internal.hash.plain.PlainHashService;
 
 /**
@@ -43,7 +38,7 @@ public class SimpleFileRealmTestCase {
 
     @Test
     public void testAuthenticationWithSuccess() throws Exception {
-        SimpleFileRealm realm = new SimpleFileRealm(getRootFile());
+        SimpleFileRealm realm = new SimpleFileRealm(getRootFile(), new PlainHashService(), null);
         realm.registerHashService(Arrays.asList("plain"), new PlainHashService());
         realm.start();
 
@@ -60,7 +55,7 @@ public class SimpleFileRealmTestCase {
     @Test
     public void testAuthenticationWithFailureWrongPassword() throws Exception {
 
-        SimpleFileRealm realm = new SimpleFileRealm(getRootFile());
+        SimpleFileRealm realm = new SimpleFileRealm(getRootFile(), new PlainHashService(), null);
         realm.registerHashService(Arrays.asList("plain"), new PlainHashService());
         realm.start();
 
@@ -72,7 +67,7 @@ public class SimpleFileRealmTestCase {
     @Test
     public void testAuthenticationWithFailureNoUserDefined() throws Exception {
 
-        SimpleFileRealm realm = new SimpleFileRealm(getRootFile());
+        SimpleFileRealm realm = new SimpleFileRealm(getRootFile(), new PlainHashService(), null);
         realm.registerHashService(Arrays.asList("plain"), new PlainHashService());
         realm.start();
 

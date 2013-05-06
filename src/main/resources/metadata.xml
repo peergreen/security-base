@@ -6,6 +6,7 @@
 
   <instance component="com.peergreen.security.internal.encode.Base64EncoderService" />
   <instance component="com.peergreen.security.internal.encode.HexaEncoderService" />
+  <instance component="com.peergreen.security.internal.encode.TextEncoderService" />
 
   <instance component="com.peergreen.security.internal.hash.plain.PlainHashService" />
 
@@ -40,7 +41,9 @@
   </instance>
 
   <!-- TODO Make this configurable -->
-  <instance component="com.peergreen.security.internal.realm.SimpleFileRealm" />
+  <instance component="com.peergreen.security.internal.realm.SimpleFileRealm">
+    <property name="store.name" value="memrlm_1" />
+  </instance>
 
   <instance component="com.peergreen.security.internal.UsernamePasswordAutoLoginService">
     <property name="username" value="admin" />

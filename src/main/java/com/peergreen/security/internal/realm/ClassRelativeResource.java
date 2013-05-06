@@ -3,8 +3,8 @@ package com.peergreen.security.internal.realm;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.peergreen.configuration.api.Resource;
 import com.peergreen.configuration.api.RepositoryException;
+import com.peergreen.configuration.api.Resource;
 
 /**
  * User: guillaume

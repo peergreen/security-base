@@ -25,4 +25,7 @@ Embed-Transitive true
 -exportcontents com.peergreen.security, \
                 com.peergreen.security.encode, \
                 com.peergreen.security.hash, \
+                com.peergreen.security.realm, \
+                com.peergreen.security.realm.manager, \
+                com.peergreen.security.realm.key, \
                 com.peergreen.security.principal

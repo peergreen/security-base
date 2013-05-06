@@ -22,8 +22,8 @@ import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Property;
 import org.apache.felix.ipojo.annotations.Provides;
 
-import com.peergreen.security.UsernamePasswordAuthenticateService;
 import com.peergreen.security.AutoLoginService;
+import com.peergreen.security.UsernamePasswordAuthenticateService;
 
 /**
  * User: guillaume

@@ -63,14 +63,15 @@ public class PropertiesUserInfoLoaderTestCase {
         u.setProperty("guillaume", "{plain}s3cr3t");
 
         Properties g = new Properties();
-        g.setProperty("guillaume", "admin, platform");
+        g.setProperty("admin", "guillaume");
+        g.setProperty("platform", "guillaume");
 
         Collection<UserInfo> infos = loader.load(u, g);
 
         assertEquals(infos.size(), 1);
         UserInfo user = infos.iterator().next();
 
-        assertEquals(user.getUsername(), "guillaume");
+        assertEquals(user.getLogin(), "guillaume");
         assertEquals(user.getRoles().size(), 2);
         assertTrue(user.getRoles().contains("admin"));
         assertTrue(user.getRoles().contains("platform"));
@@ -91,14 +92,15 @@ public class PropertiesUserInfoLoaderTestCase {
         u.setProperty("guillaume", "{plain+text}s3cr3t");
 
         Properties g = new Properties();
-        g.setProperty("guillaume", "admin, platform");
+        g.setProperty("admin", "guillaume");
+        g.setProperty("platform", "guillaume");
 
         Collection<UserInfo> infos = loader.load(u, g);
 
         assertEquals(infos.size(), 1);
         UserInfo user = infos.iterator().next();
 
-        assertEquals(user.getUsername(), "guillaume");
+        assertEquals(user.getLogin(), "guillaume");
         assertEquals(user.getRoles().size(), 2);
         assertTrue(user.getRoles().contains("admin"));
         assertTrue(user.getRoles().contains("platform"));
@@ -122,8 +124,8 @@ public class PropertiesUserInfoLoaderTestCase {
         u.setProperty("florent", "{plain+text}|o1|5/\\73"); // l33t :)
 
         Properties g = new Properties();
-        g.setProperty("guillaume", "admin, platform");
-        g.setProperty("florent", "admin");
+        g.setProperty("admin", "guillaume, florent");
+        g.setProperty("platform", "guillaume");
 
         Collection<UserInfo> infos = loader.load(u, g);
 
@@ -131,13 +133,13 @@ public class PropertiesUserInfoLoaderTestCase {
         Iterator<UserInfo> iterator = infos.iterator();
         UserInfo user = iterator.next();
 
-        assertEquals(user.getUsername(), "florent");
+        assertEquals(user.getLogin(), "florent");
         assertEquals(user.getRoles().size(), 1);
         assertTrue(user.getRoles().contains("admin"));
 
         UserInfo user2 = iterator.next();
 
-        assertEquals(user2.getUsername(), "guillaume");
+        assertEquals(user2.getLogin(), "guillaume");
         assertEquals(user2.getRoles().size(), 2);
         assertTrue(user2.getRoles().contains("admin"));
         assertTrue(user2.getRoles().contains("platform"));

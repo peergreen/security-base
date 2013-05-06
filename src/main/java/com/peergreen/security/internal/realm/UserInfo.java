@@ -20,32 +20,51 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import com.peergreen.security.hash.Hash;
+import com.peergreen.security.realm.AccountInfo;
 
 /**
  * User: guillaume
  * Date: 19/03/13
  * Time: 17:20
  */
-public class UserInfo implements Comparable<UserInfo> {
-    private final String username;
-    private final Hash hashedPassword;
+public class UserInfo implements Comparable<UserInfo>, AccountInfo {
+    private String login;
+    private Hash hashedPassword;
     private final Set<String> roles = new TreeSet<>();
 
+    public UserInfo(String username) {
+        this(username, null);
+    }
+
     public UserInfo(String username, Hash hashedPassword) {
-        this.username = username;
+        this.login = username;
         this.hashedPassword = hashedPassword;
     }
 
-    public String getUsername() {
-        return username;
+    @Override
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public Hash getHashedPassword() {
         return hashedPassword;
     }
 
+    public void setHashedPassword(Hash hashedPassword) {
+        this.hashedPassword = hashedPassword;
+    }
+
     public Set<String> getRoles() {
         return Collections.unmodifiableSet(roles);
+    }
+
+    @Override
+    public boolean isActivated() {
+        return true;
     }
 
     public void addRole(String role) {
@@ -58,6 +77,6 @@ public class UserInfo implements Comparable<UserInfo> {
 
     @Override
     public int compareTo(UserInfo o) {
-        return username.compareTo(o.username);
+        return login.compareTo(o.login);
     }
 }

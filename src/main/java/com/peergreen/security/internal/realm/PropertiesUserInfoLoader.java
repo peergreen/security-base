@@ -79,12 +79,13 @@ public class PropertiesUserInfoLoader {
             }
         }
 
-        for (String name : groups.stringPropertyNames()) {
-            UserInfo info = loaded.get(name);
-            if (info != null) {
-                String[] roles = groups.getProperty(name).split(",");
-                for (String role : roles) {
-                    info.addRole(role.trim());
+        // group ::= member [',' member]*
+        for (String group : groups.stringPropertyNames()) {
+            String[] members = groups.getProperty(group).split(",");
+            for (String member : members) {
+                UserInfo info = loaded.get(member.trim());
+                if (info != null) {
+                    info.addRole(group);
                 }
             }
         }

@@ -19,8 +19,6 @@ import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
-import com.peergreen.security.internal.encode.HexaEncoderService;
-
 /**
  * User: guillaume
  * Date: 21/03/13
