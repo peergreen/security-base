@@ -42,7 +42,7 @@
 
   <!-- TODO Make this configurable -->
   <instance component="com.peergreen.security.internal.realm.SimpleFileRealm">
-    <property name="store.name" value="memrlm_1" />
+    <property name="store.name" value="ServerAccountStore" />
   </instance>
 
   <instance component="com.peergreen.security.internal.UsernamePasswordAutoLoginService">
