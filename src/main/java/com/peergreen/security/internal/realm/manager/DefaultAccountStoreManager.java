@@ -110,6 +110,11 @@ public class DefaultAccountStoreManager implements ServiceFactory<AccountStoreMa
             return handle;
         }
 
+        @Override
+        public List<String> listStoreNames() {
+            return new ArrayList<>(references.keySet());
+        }
+
         public void close() {
             // Force remaining handles to be released
             List<ServiceHandle<?>> clone = new ArrayList<>(handles);
