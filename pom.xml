@@ -50,6 +50,12 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.ipojo</artifactId>
+      <version>1.10.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>org.ow2.util.base64</groupId>
       <artifactId>base64</artifactId>
       <version>2.0.0</version>
@@ -121,6 +127,13 @@
       <name>Peergreen Release Nexus</name>
       <url>https://forge.peergreen.com/nexus/content/repositories/releases/</url>
       <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <!-- TODO remove when iPOJO 1.10.1 will be promoted -->
+      <id>apache-felix-ipojo</id>
+      <name>Apache Felix iPOJO Staging Repository</name>
+      <url>https://repository.apache.org/content/repositories/orgapachefelix-021/</url>
       <snapshots><enabled>false</enabled></snapshots>
     </repository>
   </repositories>

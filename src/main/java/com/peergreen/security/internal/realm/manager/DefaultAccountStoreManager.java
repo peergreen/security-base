@@ -13,6 +13,7 @@ import org.apache.felix.ipojo.annotations.Instantiate;
 import org.apache.felix.ipojo.annotations.Invalidate;
 import org.apache.felix.ipojo.annotations.Unbind;
 import org.apache.felix.ipojo.annotations.Validate;
+import org.apache.felix.ipojo.dependency.interceptors.TransformedServiceReference;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceFactory;
@@ -45,7 +46,17 @@ public class DefaultAccountStoreManager implements ServiceFactory<AccountStoreMa
           aggregate = true)
     public void bindAccountStore(ServiceReference<?> reference) {
         String name = (String) reference.getProperty(AccountStore.STORE_NAME);
-        references.put(name, reference);
+        references.put(name, getOriginalReference(reference));
+    }
+
+    /**
+     * Workaround a bug in iPOJO 1.10.1
+     */
+    private ServiceReference<?> getOriginalReference(final ServiceReference<?> reference) {
+        if (reference instanceof TransformedServiceReference) {
+            return ((TransformedServiceReference) reference).getWrappedReference();
+        }
+        return reference;
     }
 
     @Unbind
