@@ -154,7 +154,11 @@ public class SimpleFileRealm implements UsernamePasswordAuthenticateService, Mod
         PropertiesUserInfoLoader loader = new PropertiesUserInfoLoader(new HashServiceFinder() {
             @Override
             public HashService find(String encryption) {
-                return hashers.get(encryption);
+                HashService service = hashers.get(encryption);
+                if ((service == null) && "plain".equals(encryption)) {
+                    service = defaultHasher;
+                }
+                return service;
             }
         });
 

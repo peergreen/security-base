@@ -4,12 +4,6 @@
        xmlns="org.apache.felix.ipojo"
        xsi:schemaLocation="org.apache.felix.ipojo http://felix.apache.org/ipojo/schemas/1.8.0/core.xsd">
 
-  <!-- TODO Make this configurable -->
-  <!-- Weak weak weak, I need this realm to be injected with all HashService before starting -->
-  <instance component="com.peergreen.security.internal.realm.SimpleFileRealm">
-    <property name="store.name" value="ServerAccountStore" />
-  </instance>
-
   <instance component="com.peergreen.security.internal.encode.Base64EncoderService" />
   <instance component="com.peergreen.security.internal.encode.HexaEncoderService" />
   <instance component="com.peergreen.security.internal.encode.TextEncoderService" />
@@ -44,6 +38,12 @@
   <instance component="com.peergreen.security.internal.hash.digest.MessageDigestHashService">
     <property name="hash.name" value="{sha-512, SHA-512}" />
     <property name="algorithm" value="SHA-512" />
+  </instance>
+
+  <!-- TODO Make this configurable -->
+  <!-- Weak weak weak, I need this realm to be injected with all HashService before starting -->
+  <instance component="com.peergreen.security.internal.realm.SimpleFileRealm">
+    <property name="store.name" value="ServerAccountStore" />
   </instance>
 
   <instance component="com.peergreen.security.internal.UsernamePasswordAutoLoginService">
